@@ -8,16 +8,21 @@
 
 #include <stdio.h>
 
-//int playerOneLives;
-//int playerTwoLives;
-//int activePlayer;
+int playerOneLives;
+int playerTwoLives;
+int activePlayer;
 
 int main(int argc, const char * argv[]) {
     
     /* 
      set lives of players to 3
-     loop while (player one and player two both have lives)
+     */
+    playerOneLives = 3;
+    playerTwoLives = 3;
+    
+     while (playerOneLives > 0 && playerTwoLives > 0)
      {
+    /*
         define first number randomly between 1 and 20;
         define second number randomly between 1 and 20;
      
@@ -31,10 +36,12 @@ int main(int argc, const char * argv[]) {
             decrement lives
             display scores
         switch active player
+          */
+         printf("%d",playerOneLives--);
      }
-     announce winner
-     display scores
-     */
+    /* announce winner
+     display scores */
+
     
     return 0;
 }
