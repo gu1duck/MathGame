@@ -15,6 +15,7 @@ int randomNumber(int max);
 void prompt(int activePlayer, int firstNumber, int secondNumber);
 int successFromPlayerInput (int firstNumber, int secondNumber);
 void succeed ();
+void fail();
 
 int playerOneLives;
 int playerTwoLives;
@@ -46,19 +47,7 @@ int main(int argc, const char * argv[]) {
          }
          else
          {
-             printf("FAILURE\n");
-             if (activePlayer == 1)
-             {
-                 playerOneLives--;
-             }
-             else
-             {
-                 playerTwoLives--;
-             }
-             if (playerTwoLives > 0 && playerOneLives > 0)
-             {
-             printf("The current score is:\nPlayer 1: %d\nPlayer 2: %d\n\n",playerOneLives, playerTwoLives);
-             }
+             fail();
          }
          if (activePlayer == 1)
          {
@@ -81,7 +70,7 @@ int main(int argc, const char * argv[]) {
         switch active player
           */
      }
-    printf("GAME OVER\nThe final score is:\nPlayer 1: %d\nPlayer 2: %d\n",playerOneLives, playerTwoLives);
+    printf("GAME OVER\n\nThe final score is:\nPlayer 1: %d\nPlayer 2: %d\n",playerOneLives, playerTwoLives);
     
     
     /* announce winner
@@ -91,15 +80,18 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-int randomNumber(int max){
+int randomNumber(int max)
+{
     return (1 + rand() % max);
 }
 
-void prompt(int activePlayer, int firstNumber, int secondNumber){
+void prompt(int activePlayer, int firstNumber, int secondNumber)
+{
     printf("Player %d, what is %d + %d?\n>", activePlayer, firstNumber, secondNumber);
 }
 
-int successFromPlayerInput(int firstNumber, int secondNumber){
+int successFromPlayerInput(int firstNumber, int secondNumber)
+{
     int input;
     scanf("%d", &input);
     if (input == firstNumber + secondNumber)
@@ -109,7 +101,25 @@ int successFromPlayerInput(int firstNumber, int secondNumber){
     return 0;
 }
 
-void succeed (){
-    printf("You did it!!\n");
+void succeed ()
+{
+    printf("You did it!!\n\n");
+}
+
+void fail()
+{
+    printf("FAILURE\n\n");
+    if (activePlayer == 1)
+    {
+        playerOneLives--;
+    }
+    else
+    {
+        playerTwoLives--;
+    }
+    if (playerTwoLives > 0 && playerOneLives > 0)
+    {
+        printf("The current score is:\nPlayer 1: %d\nPlayer 2: %d\n\n",playerOneLives, playerTwoLives);
+    }
 }
 
