@@ -27,7 +27,7 @@ int main(int argc, const char * argv[]) {
     playerOneLives = 3;
     playerTwoLives = 3;
     activePlayer = randomNumber(2);
-    printf("Player %d plays first", activePlayer);
+    printf("PLAYER %d PLAYS FIRST\n\n", activePlayer);
     
     /* define RNG seed based on time */
     srand((unsigned)time(NULL));
@@ -45,14 +45,36 @@ int main(int argc, const char * argv[]) {
          
          int input;
              scanf("%d", &input);
-         if (input == firstNumber + secondNumber){
-             printf("You did it!!");
+         if (input == firstNumber + secondNumber)
+         {
+             printf("You did it!!\n");
          }
-         
-         
-         
-         
-                  /*
+         else
+         {
+             printf("FAILURE\n");
+             if (activePlayer == 1)
+             {
+                 playerOneLives--;
+             }
+             else
+             {
+                 playerTwoLives--;
+             }
+             if (playerTwoLives > 0 && playerOneLives > 0)
+             {
+             printf("The current score is:\nPlayer 1: %d\nPlayer 2: %d\n\n",playerOneLives, playerTwoLives);
+             }
+         }
+         if (activePlayer == 1)
+         {
+             activePlayer = 2;
+         }
+         else
+         {
+             activePlayer = 1;
+         }
+    
+       /*
         take input from active player;
         evaluate input vs actual result;
         if result is correct
@@ -63,8 +85,8 @@ int main(int argc, const char * argv[]) {
             display scores
         switch active player
           */
-         printf("%d",playerOneLives--);
      }
+    printf("GAME OVER\nThe final score is:\nPlayer 1: %d\nPlayer 2: %d\n",playerOneLives, playerTwoLives);
     
     
     /* announce winner
