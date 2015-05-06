@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int playerOneLives;
 int playerTwoLives;
@@ -26,6 +27,7 @@ int main(int argc, const char * argv[]) {
     /*
         define first number randomly between 1 and 20;
      */
+         srand((unsigned)time(NULL));
          int firstNumber;
          int secondNumber;
          
