@@ -16,6 +16,8 @@ void prompt(int activePlayer, int firstNumber, int secondNumber);
 int successFromPlayerInput (int firstNumber, int secondNumber);
 void succeed ();
 void fail();
+void switchActivePlayer();
+void defineStartingState(int setPlayerOneLives, int setPlayerTwoLives, int setStartingPlayer);
 
 int playerOneLives;
 int playerTwoLives;
@@ -23,16 +25,7 @@ int activePlayer;
 
 int main(int argc, const char * argv[]) {
     
-    /* 
-     set lives of players to 3
-     */
-    playerOneLives = 3;
-    playerTwoLives = 3;
-    activePlayer = randomNumber(2);
-    printf("PLAYER %d PLAYS FIRST\n\n", activePlayer);
-    
-    /* define RNG seed based on time */
-    srand((unsigned)time(NULL));
+    defineStartingState(3,3,randomNumber(2));
     
      while (playerOneLives > 0 && playerTwoLives > 0)
      {
@@ -49,35 +42,23 @@ int main(int argc, const char * argv[]) {
          {
              fail();
          }
-         if (activePlayer == 1)
-         {
-             activePlayer = 2;
-         }
-         else
-         {
-             activePlayer = 1;
-         }
+         
+         switchActivePlayer();
     
-       /*
-        take input from active player;
-        evaluate input vs actual result;
-        if result is correct
-            display affirming message about life
-        if result is incorrect
-            display disparaging message
-            decrement lives
-            display scores
-        switch active player
-          */
-     }
+    }
     printf("GAME OVER\n\nThe final score is:\nPlayer 1: %d\nPlayer 2: %d\n",playerOneLives, playerTwoLives);
     
-    
-    /* announce winner
-     display scores */
-
-    
     return 0;
+}
+
+void defineStartingState(int setPlayerOneLives, int setPlayerTwoLives, int setStartingPlayer){
+    playerOneLives = setPlayerOneLives;
+    playerTwoLives = setPlayerTwoLives;
+    activePlayer = setStartingPlayer;
+    printf("PLAYER %d PLAYS FIRST\n\n", activePlayer);
+    
+    /* define RNG seed based on time */
+    srand((unsigned)time(NULL));
 }
 
 int randomNumber(int max)
@@ -121,5 +102,17 @@ void fail()
     {
         printf("The current score is:\nPlayer 1: %d\nPlayer 2: %d\n\n",playerOneLives, playerTwoLives);
     }
+}
+
+void switchActivePlayer(){
+    if (activePlayer == 1)
+    {
+        activePlayer = 2;
+    }
+    else
+    {
+        activePlayer = 1;
+    }
+    
 }
 
