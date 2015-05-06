@@ -9,10 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 int randomNumber(int max);
 void prompt(int activePlayer, int firstNumber, int secondNumber);
-
 
 int playerOneLives;
 int playerTwoLives;
@@ -42,8 +42,14 @@ int main(int argc, const char * argv[]) {
          
          prompt(activePlayer, firstNumber, secondNumber);
          
+         if (playerInput == firstNumber + secondNumber){
+             //success
+         }
+         
+         
+         
+         
                   /*
-        prompt active player;
         take input from active player;
         evaluate input vs actual result;
         if result is correct
@@ -71,5 +77,11 @@ int randomNumber(int max){
 
 void prompt(int activePlayer, int firstNumber, int secondNumber){
     printf("Player %d, what is %d + %d?\n>", activePlayer, firstNumber, secondNumber);
-
 }
+
+int playerInput(){
+    int input;
+    scanf("%d", &input);
+    return input;
+}
+
