@@ -11,6 +11,8 @@
 #include <time.h>
 
 int randomNumber(int max);
+void prompt(int activePlayer, int firstNumber, int secondNumber);
+
 
 int playerOneLives;
 int playerTwoLives;
@@ -38,6 +40,7 @@ int main(int argc, const char * argv[]) {
          int firstNumber = randomNumber(20);
          int secondNumber= randomNumber(20);
          
+         prompt(activePlayer, firstNumber, secondNumber);
          
                   /*
         prompt active player;
@@ -64,4 +67,9 @@ int main(int argc, const char * argv[]) {
 
 int randomNumber(int max){
     return (1 + rand() % max);
+}
+
+void prompt(int activePlayer, int firstNumber, int secondNumber){
+    printf("Player %d, what is %d + %d?\n>", activePlayer, firstNumber, secondNumber);
+
 }
