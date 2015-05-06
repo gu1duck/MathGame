@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int playerOneLives;
 int playerTwoLives;
@@ -24,6 +25,16 @@ int main(int argc, const char * argv[]) {
      {
     /*
         define first number randomly between 1 and 20;
+     */
+         int firstNumber;
+         int secondNumber;
+         
+         for (int i = 0; i < 5; i++){
+             firstNumber = (1 + rand() % 20);
+             secondNumber = (1 + rand() % 20);
+             printf("First number is %d. Second number is %d\n", firstNumber, secondNumber);
+         }
+         /*
         define second number randomly between 1 and 20;
      
         prompt active player;
