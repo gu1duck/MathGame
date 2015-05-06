@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int randomNumber20();
+int randomNumber(int max);
 
 int playerOneLives;
 int playerTwoLives;
@@ -23,19 +23,23 @@ int main(int argc, const char * argv[]) {
      */
     playerOneLives = 3;
     playerTwoLives = 3;
+    activePlayer = randomNumber(2);
+    printf("Player %d plays first", activePlayer);
+    
+    /* define RNG seed based on time */
+    srand((unsigned)time(NULL));
     
      while (playerOneLives > 0 && playerTwoLives > 0)
      {
     /*
-        define first number randomly between 1 and 20;
+        define  numbers randomly between 1 and 20;
      */
-         srand((unsigned)time(NULL));
-         int firstNumber = randomNumber20;
-         int secondNumber= randomNumber20;
+         
+         int firstNumber = randomNumber(20);
+         int secondNumber= randomNumber(20);
+         
          
                   /*
-        define second number randomly between 1 and 20;
-     
         prompt active player;
         take input from active player;
         evaluate input vs actual result;
@@ -58,6 +62,6 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-int randomNumber20(){
-    return (1 + rand() % 20);
+int randomNumber(int max){
+    return (1 + rand() % max);
 }
