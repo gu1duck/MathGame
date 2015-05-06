@@ -13,7 +13,8 @@
 
 int randomNumber(int max);
 void prompt(int activePlayer, int firstNumber, int secondNumber);
-int playerInput ();
+int successFromPlayerInput (int firstNumber, int secondNumber);
+void succeed ();
 
 int playerOneLives;
 int playerTwoLives;
@@ -34,20 +35,14 @@ int main(int argc, const char * argv[]) {
     
      while (playerOneLives > 0 && playerTwoLives > 0)
      {
-    /*
-        define  numbers randomly between 1 and 20;
-     */
-         
          int firstNumber = randomNumber(20);
          int secondNumber= randomNumber(20);
          
          prompt(activePlayer, firstNumber, secondNumber);
          
-         int input;
-             scanf("%d", &input);
-         if (input == firstNumber + secondNumber)
+         if (successFromPlayerInput(firstNumber, secondNumber))
          {
-             printf("You did it!!\n");
+             succeed();
          }
          else
          {
@@ -104,9 +99,17 @@ void prompt(int activePlayer, int firstNumber, int secondNumber){
     printf("Player %d, what is %d + %d?\n>", activePlayer, firstNumber, secondNumber);
 }
 
-//int playerInput(){
-//    int input;
-//    scanf("%d", &input);
-//    return input;
-//}
+int successFromPlayerInput(int firstNumber, int secondNumber){
+    int input;
+    scanf("%d", &input);
+    if (input == firstNumber + secondNumber)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+void succeed (){
+    printf("You did it!!\n");
+}
 
