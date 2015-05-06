@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+int randomNumber20();
+
 int playerOneLives;
 int playerTwoLives;
 int activePlayer;
@@ -28,15 +30,10 @@ int main(int argc, const char * argv[]) {
         define first number randomly between 1 and 20;
      */
          srand((unsigned)time(NULL));
-         int firstNumber;
-         int secondNumber;
+         int firstNumber = randomNumber20;
+         int secondNumber= randomNumber20;
          
-         for (int i = 0; i < 5; i++){
-             firstNumber = (1 + rand() % 20);
-             secondNumber = (1 + rand() % 20);
-             printf("First number is %d. Second number is %d\n", firstNumber, secondNumber);
-         }
-         /*
+                  /*
         define second number randomly between 1 and 20;
      
         prompt active player;
@@ -52,9 +49,15 @@ int main(int argc, const char * argv[]) {
           */
          printf("%d",playerOneLives--);
      }
+    
+    
     /* announce winner
      display scores */
 
     
     return 0;
+}
+
+int randomNumber20(){
+    return (1 + rand() % 20);
 }
