@@ -18,6 +18,7 @@ void succeed ();
 void fail();
 void switchActivePlayer();
 void defineStartingState(int setPlayerOneLives, int setPlayerTwoLives, int setStartingPlayer);
+void endGame();
 
 int playerOneLives;
 int playerTwoLives;
@@ -46,8 +47,7 @@ int main(int argc, const char * argv[]) {
          switchActivePlayer();
     
     }
-    printf("GAME OVER\n\nThe final score is:\nPlayer 1: %d\nPlayer 2: %d\n",playerOneLives, playerTwoLives);
-    
+    endGame();
     return 0;
 }
 
@@ -113,6 +113,9 @@ void switchActivePlayer(){
     {
         activePlayer = 1;
     }
-    
+}
+
+void endGame(){
+    printf("GAME OVER:\nPlayer %d wins!\n\nThe final score is:\nPlayer 1: %d\nPlayer 2: %d\n",activePlayer, playerOneLives, playerTwoLives);
 }
 
